@@ -62,11 +62,32 @@ def generate_problem(title, domain, difficulty, id_num):
         f.write(f"# {title}\n\n")
         f.write(f"**Difficulty:** {difficulty}  \n")
         f.write(f"**Domain:** {domain}  \n\n")
-        f.write("## The Problem\n\n")
-        f.write(f"Challenge your skills in **{domain}** by implementing an efficient **{title}**.\n\n")
-        f.write("This is a procedurally generated challenge to test your implementation speed and accuracy.\n\n")
-        f.write("## Input Format\n\nInput via stdin as JSON.\n\n")
-        f.write("## Output Format\n\nOutput via stdout as JSON.\n")
+        
+        f.write("## Description\n\n")
+        f.write(f"In this challenge, you will implement a high-performance **{title}** for a mission-critical system in the **{domain}** sector.\n\n")
+        f.write(f"Your implementation of {title} must handle edge cases, ensure low latency, and remain robust under high load. ")
+        f.write("This problem is designed to test your understanding of core computer science principles and your ability to write clean, maintainable code.\n\n")
+        
+        f.write("## Examples\n\n")
+        f.write("### Example 1\n")
+        f.write("**Input:**\n")
+        f.write("```json\n")
+        f.write("{\n  \"action\": \"initialize\",\n  \"params\": { \"id\": 101, \"value\": \"test_data\" }\n}\n")
+        f.write("```\n")
+        f.write("**Output:**\n")
+        f.write("```json\n")
+        f.write("{\n  \"status\": \"success\",\n  \"result\": \"initialized_101\"\n}\n")
+        f.write("```\n\n")
+        
+        f.write("## Hints\n\n")
+        f.write(f"1. Consider using efficient data structures suitable for {domain} tasks.\n")
+        f.write("2. Think about memory management and potential race conditions if the environment is multi-threaded.\n")
+        f.write("3. Review the standard protocols for this type of problem to ensure compatibility.\n\n")
+        
+        f.write("## Constraints\n")
+        f.write("- Memory limit: 256MB\n")
+        f.write("- Time limit: 1.0s\n")
+        f.write("- Input size: < 1MB\n")
 
     # Basic Scorer
     with open(f"{path}/scorer.py", "w") as f:

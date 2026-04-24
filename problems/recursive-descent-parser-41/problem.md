@@ -1,18 +1,39 @@
 # Recursive Descent Parser
 
-**Difficulty:** Medium  
+**Difficulty:** Easy  
 **Domain:** Compilers  
 
-## The Problem
+## Description
 
-Challenge your skills in **Compilers** by implementing an efficient **Recursive Descent Parser**.
+In this challenge, you will implement a high-performance **Recursive Descent Parser** for a mission-critical system in the **Compilers** sector.
 
-This is a procedurally generated challenge to test your implementation speed and accuracy.
+Your implementation of Recursive Descent Parser must handle edge cases, ensure low latency, and remain robust under high load. This problem is designed to test your understanding of core computer science principles and your ability to write clean, maintainable code.
 
-## Input Format
+## Examples
 
-Input via stdin as JSON.
+### Example 1
+**Input:**
+```json
+{
+  "action": "initialize",
+  "params": { "id": 101, "value": "test_data" }
+}
+```
+**Output:**
+```json
+{
+  "status": "success",
+  "result": "initialized_101"
+}
+```
 
-## Output Format
+## Hints
 
-Output via stdout as JSON.
+1. Consider using efficient data structures suitable for Compilers tasks.
+2. Think about memory management and potential race conditions if the environment is multi-threaded.
+3. Review the standard protocols for this type of problem to ensure compatibility.
+
+## Constraints
+- Memory limit: 256MB
+- Time limit: 1.0s
+- Input size: < 1MB
