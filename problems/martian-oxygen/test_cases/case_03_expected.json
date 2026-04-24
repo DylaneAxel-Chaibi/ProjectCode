@@ -1,0 +1,11 @@
+{
+  "flow_plan": [
+    {"pipe": "G1->S1", "flow": 60},
+    {"pipe": "G1->S2", "flow": 20},
+    {"pipe": "G2->S2", "flow": 33.3333},
+    {"pipe": "G2->S3", "flow": 66.6667},
+    {"pipe": "G1->S3", "flow": 20},
+    {"pipe": "G2->S1", "flow": 0},
+    {"pipe": "G1->G2", "flow": 0}
+  ]
+}

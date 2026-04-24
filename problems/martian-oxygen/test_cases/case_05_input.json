@@ -1,0 +1,5 @@
+{
+  "nodes": [{"id": "G1", "type": "generator", "output": 100}],
+  "pipes": [{"from": "G1", "to": "S1", "capacity": 100, "leak_rate": 0.5}],
+  "sinks": [{"id": "S1", "demand": 50}]
+}

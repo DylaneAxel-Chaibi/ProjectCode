@@ -1,0 +1,33 @@
+{
+  "nodes": [
+    {"id": "G1", "type": "generator", "output": 100},
+    {"id": "G2", "type": "generator", "output": 100},
+    {"id": "G3", "type": "generator", "output": 100},
+    {"id": "R1", "type": "relay"},
+    {"id": "R2", "type": "relay"},
+    {"id": "R3", "type": "relay"}
+  ],
+  "pipes": [
+    {"from": "G1", "to": "R1", "capacity": 100, "leak_rate": 0.1},
+    {"from": "G2", "to": "R2", "capacity": 100, "leak_rate": 0.1},
+    {"from": "G3", "to": "R3", "capacity": 100, "leak_rate": 0.1},
+    {"from": "R1", "to": "S1", "capacity": 80, "leak_rate": 0.3},
+    {"from": "R1", "to": "S2", "capacity": 80, "leak_rate": 0.1},
+    {"from": "R2", "to": "S2", "capacity": 80, "leak_rate": 0.1},
+    {"from": "R2", "to": "S3", "capacity": 80, "leak_rate": 0.5},
+    {"from": "R3", "to": "S3", "capacity": 80, "leak_rate": 0.0},
+    {"from": "R3", "to": "S4", "capacity": 80, "leak_rate": 0.4},
+    {"from": "G1", "to": "S1", "capacity": 30, "leak_rate": 0.1},
+    {"from": "G2", "to": "S3", "capacity": 30, "leak_rate": 0.1},
+    {"from": "G3", "to": "S4", "capacity": 30, "leak_rate": 0.0},
+    {"from": "R1", "to": "R2", "capacity": 50, "leak_rate": 0.1},
+    {"from": "R2", "to": "R3", "capacity": 50, "leak_rate": 0.1},
+    {"from": "R3", "to": "S1", "capacity": 50, "leak_rate": 0.1}
+  ],
+  "sinks": [
+    {"id": "S1", "demand": 80},
+    {"id": "S2", "demand": 80},
+    {"id": "S3", "demand": 80},
+    {"id": "S4", "demand": 80}
+  ]
+}

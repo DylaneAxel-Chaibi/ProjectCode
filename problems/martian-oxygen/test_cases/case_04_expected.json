@@ -1,0 +1,19 @@
+{
+  "flow_plan": [
+    {"pipe": "G1->R1", "flow": 99},
+    {"pipe": "G2->R2", "flow": 100},
+    {"pipe": "G3->R3", "flow": 57},
+    {"pipe": "R1->S1", "flow": 53},
+    {"pipe": "R1->S2", "flow": 46},
+    {"pipe": "R2->S2", "flow": 26},
+    {"pipe": "R2->S3", "flow": 74},
+    {"pipe": "R3->S3", "flow": 0},
+    {"pipe": "R3->S4", "flow": 57},
+    {"pipe": "G1->S1", "flow": 30},
+    {"pipe": "G2->S3", "flow": 30},
+    {"pipe": "G3->S4", "flow": 30},
+    {"pipe": "R1->R2", "flow": 0},
+    {"pipe": "R2->R3", "flow": 0},
+    {"pipe": "R3->S1", "flow": 0}
+  ]
+}

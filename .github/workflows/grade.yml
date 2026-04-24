@@ -1,0 +1,69 @@
+name: Grade Solution
+
+on:
+  push:
+    paths:
+      - 'solutions/**'
+
+jobs:
+  grade:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          if [ -f runner/requirements.txt ]; then
+            pip install -r runner/requirements.txt
+          fi
+
+      - name: Detect Modified Problem
+        id: detect
+        run: |
+          # Find changed files in the push
+          if [ "${{ github.event.before }}" != "0000000000000000000000000000000000000000" ] && [ -n "${{ github.event.before }}" ]; then
+            CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} 2>/dev/null || git log -1 --name-only --format=)
+          else
+            CHANGED_FILES=$(git log -1 --name-only --format=)
+          fi
+          
+          # Extract problem slug from paths like 'solutions/martian-oxygen/main.py'
+          SLUG=$(echo "$CHANGED_FILES" | grep '^solutions/' | head -n 1 | cut -d'/' -f2)
+          
+          if [ -z "$SLUG" ]; then
+            echo "No solution changes detected"
+            echo "slug=" >> $GITHUB_OUTPUT
+          else
+            echo "Detected problem slug: $SLUG"
+            echo "slug=$SLUG" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run Grader
+        if: steps.detect.outputs.slug != ''
+        run: |
+          python runner/run.py --problem ${{ steps.detect.outputs.slug }} --solution solutions/${{ steps.detect.outputs.slug }}
+
+      - name: Commit and Push Results
+        if: steps.detect.outputs.slug != ''
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add results/scores.json
+          
+          # Only commit if scores.json actually changed
+          if ! git diff --staged --quiet; then
+            git commit -m "Auto-grade: Update scores for ${{ steps.detect.outputs.slug }}"
+            git push
+          else
+            echo "No changes to scores.json"
+          fi

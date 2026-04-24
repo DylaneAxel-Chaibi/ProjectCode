@@ -1,0 +1,15 @@
+{
+  "nodes": [
+    {"id": "G1", "type": "generator", "output": 60},
+    {"id": "G2", "type": "generator", "output": 60}
+  ],
+  "pipes": [
+    {"from": "G1", "to": "S1", "capacity": 60, "leak_rate": 0.1},
+    {"from": "G2", "to": "S2", "capacity": 60, "leak_rate": 0.1},
+    {"from": "G1", "to": "S2", "capacity": 20, "leak_rate": 0.1}
+  ],
+  "sinks": [
+    {"id": "S1", "demand": 50},
+    {"id": "S2", "demand": 50}
+  ]
+}
