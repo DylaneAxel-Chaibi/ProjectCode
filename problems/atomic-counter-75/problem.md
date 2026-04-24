@@ -1,0 +1,18 @@
+# Atomic Counter
+
+**Difficulty:** Medium  
+**Domain:** Systems  
+
+## The Problem
+
+Challenge your skills in **Systems** by implementing an efficient **Atomic Counter**.
+
+This is a procedurally generated challenge to test your implementation speed and accuracy.
+
+## Input Format
+
+Input via stdin as JSON.
+
+## Output Format
+
+Output via stdout as JSON.
